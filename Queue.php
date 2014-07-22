@@ -2,17 +2,17 @@
 
 class Queue {
 
-   public function __construct() {
-       
-   }
+	private $redis;
 
+	public function __construct() {
+		$this->redis = new Redis();
+	}
 
-   public function pop() {
+	public function pop($key, $score) {
+		$redis->zRange($key, 0, $score);
+	}
 
-   }
-
-   public function push() {
-
-
-   }
+	public function push($key, $value, $score) {
+		return $this->redis->zAdd($key, $score, $value);
+	}
 }
